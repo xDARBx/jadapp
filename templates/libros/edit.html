@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <title>Formulario de edicion</title>
+</head>
+<!-- ENTIENDO QUELO PREVIO NO VA PORQUE SE INSERTAN HEADER Y FOOTER
+    LO MISMO CON LA ETIQUETA BODY Y CIERRE DE BODY Y HTML-->
+
+<body>
+
+    Formulario para editar {% for libro in libros %}
+    <form method="post" action="/update" enctype="multipart/form-data">
+
+        <div class="card">
+            <div class="card-header">
+                Editar libro
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Datos del libro</h5>
+                <p class="card-text">
+
+                    <!--Punto 23 de la guia - Revisar porque lo hice sola - Saque los <br> ver si deberian quedar -->
+                    <div class="form-group">
+                        <!-- Yo dejaria el campo libre porque el type es hidden y no lo va a mostrar anyway-->
+                        <label for="txtID"></label>
+                        <input id="txtID" value="{{ libro[0] }}" class:="form-control" type="hidden" name="txtID">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="txtNombre">Nombre:</label>
+                        <input id="txtNombre" value="{{ libro[1] }}" class:="form-control" type="text" name="txtNombre">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="txtDescripcion">Descripcion:</label>
+                        <input id="txtDescripcion" value="{{ libro[2] }}" class:="form-control" type="text" name="txtDescripcion">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="txtImagen">Imagen:</label>
+                        <img class="img-thumbnail" width="100" src="{{url_for('uploads', nombreImagen=libro[3])}}" alt="">
+                        <input id="txtImagen" class="form-control" type="file" name="txtImagen">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-success" value="Agregar">
+                        <a href="{{url_for('index')}}" class="btn btn-primary">Regresar</a>
+                    </div>
+            </div>
+        </div>
+
+
+        <!--
+        ID: <input type="text" value="{{ libro[0] }}" name="txtID" id="txtID"> <br> Nombre: <input type="text" value="{{ libro[1] }}" name="txtNombre" id="txtNombre"> <br> Descripcion: <input type="text" value="{{ libro[2] }}" name="txtDescripcion" id="txtDescripcion">        <br>
+        
+        Imagen: -->
+        <!-- Punto 19 de la guia - Revisar porque lo hice sola {{ libro[3] }} -->
+        <!--
+        <br> <img class="img-thumbnail" width="100" src="{{url_for('uploads', nombreImagen=libro[3])}}" alt=""> <br>
+        <input type="file" name="txtImagen" id="txtImagen"> <br> <br>
+        <input type="submit" value="Agregar"> -->
+    </form>
+    {% endfor %}
+
+</body>

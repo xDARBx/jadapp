@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <title>JaD Library</title>
+</head>
+
+<body>
+    <div class="container-fluid bg-light">
+        <div class="row">
+            <div class="col-md">
+                <header class="py-3">
+                    <img class="img-fluid" src="/img/Koala.jpg" alt="" width="400px" height="10px">
+                    <h3 class="text-center">JAD On-linebrary</h3>
+                </header>
+            </div>
+        </div>
+    </div>
+    <!-- Punto 20 de la guia - Revisar porque lo hice sola -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light text-center">
+        <a class="navbar-brand text-center">Gestion de libros</a>
+        <button class="navbar-toggler" data-target="#my-nav" data-toggle="collapse" aria-controls="my-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+        <div id="my-nav" class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{url_for('index')}}">Libros<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Otro item</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">

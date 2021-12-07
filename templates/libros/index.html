@@ -1,0 +1,31 @@
+{% include 'header.html' %}
+
+<br> <a href="{{url_for('create')}}" class="btn btn-success"> Ingresar nuevo libro </a> <br> <br>
+
+<table class="table table-light">
+    <thead class="thead-light">
+        <tr>
+            <th>#</th>
+            <th>Imagen</th>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Acciones </th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for libro in libros %}
+        <tr>
+            <td>{{libro[0]}}</td>
+            <!--<td>{{libro[3]}}</td>-->
+            <!--Cambio hecho en el Punto 18-->
+            <td> <img class="img-thumbnail" width="100" src="uploads/{{libro[3]}}" alt=""> </td>
+            <td>{{libro[1]}}</td>
+            <td>{{libro[2]}}</td>
+            <!--<td> <a href="/edit/{{libro[0]}}">Editar</a> | <a href="/destroy/{{libro[0]}}">Borrar</a> </td>-->
+            <!--Cambio hecho en el Punto 21-->
+            <td> <a class="btn btn-warning" href="/edit/{{libro[0]}}">Editar</a> | <a class="btn btn-danger" onclick="return confirm('¿Desea borrar al libro?')" href="/destroy/{{libro[0]}}">Borrar</a> </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% include 'footer.html' %}
