@@ -1,67 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
+{% include 'header.html' %} {% with messages = get_flashed_messages() %} {% if messages %}
+<div class="alert alert-danger" role="alert">
+    {% for message in messages %} {{message}} {% endfor %}
+</div>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
-    <title>Formulario de carga</title>
-</head>
-<!-- ENTIENDO QUELO PREVIO NO VA PORQUE SE INSERTAN HEADER Y FOOTER
-    LO MISMO CON LA ETIQUETA BODY Y CIERRE DE BODY Y HTML-->
+{% endif %} {% endwith %}
 
-<body>
-
-    <!-- Punto 25 de la guia - Revisar la ubicacion -->
-
-    {% include 'header.html' %} {% with messages= get_flashed_messages() %} {% if messages %}
-    <div class="alert alert-danger" role="alert">
-        {% for message in messages %} {{message}} {% endfor %}
-    </div>
-
-    {% endif %} {% endwith %}
+<form method="post" action="/store" enctype="multipart/form-data">
 
 
-    <form method="post" action="/store" enctype="multipart/form-data">
-
-        <!-- LO QUE SIGUE SE VA PORQUE PASA A FORMATO BOOTSTRAP-->
-        <!--Nombre: <input type="text" name="txtNombre" id="txtNombre"> <br> 
-        Descripcion: <input type="text" name="txtDescripcion" id="txtDescripcion"> <br>
-        Imagen: <input type="file" name="txtImagen" id="txtImagen"> <br> <br>
-        <input type="submit" value="Agregar">-->
-
-        <div class="card">
-            <div class="card-header">
-                Ingresar libros
-            </div>
-            <div class="card-body">
-                <h5 class="card-title">Datos del libro</h5>
-                <p class="card-text">
-
-                    <!--Punto 22 de la guia - Revisar porque lo hice sola - Saque los <br> ver si deberian quedar -->
-                    <div class="form-group">
-                        <label for="txtNombre">Nombre:</label>
-                        <input id="txtNombre" class="form-control" type="text" name="txtNombre">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="txtDescripcion">Descripcion:</label>
-                        <input id="txtDescripcion" class="form-control" type="text" name="txtDescripcion">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="txtImagen">Imagen:</label>
-                        <input id="txtImagen" class="form-control" type="file" name="txtImagen">
-                    </div>
-
-                    <!-- Chequear si quedan bien armados estos botones-->
-                    <div class="form-group">
-                        <input type="submit" class="btn btn-success" value="Agregar">
-                        <a href="{{url_for('index')}}" class="btn btn-primary">Regresar</a>
-                    </div>
-
-            </div>
+    <div> </div>
+    <div class="card">
+        <div class="card-header">
+            Ingresar libros
         </div>
-    </form>
+        <div class="card-body">
+            <h5 class="card-title">Datos del libro</h5>
+            <p class="card-text">
 
-</body>
+                <div class="form-group">
+                    <label for="txtNombre">Nombre:</label>
+                    <input id="txtNombre" class="form-control" type="text" name="txtNombre">
+                </div>
+
+                <div class="form-group">
+                    <label for="txtAutor">Autor:</label>
+                    <input id="txtAutor" class="form-control" type="text" name="txtAutor">
+                </div>
+
+                <div class="form-group">
+                    <label for="txtDescripcion">Descripcion:</label>
+                    <input id="txtDescripcion" class="form-control" type="text" name="txtDescripcion">
+                </div>
+
+                <div class="form-group">
+                    <label for="txtImagen">Imagen:</label>
+                    <input id="txtImagen" class="form-control" type="file" name="txtImagen">
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" class="btn btn-success" value="Agregar">
+                    <a href="{{url_for('index')}}" class="btn btn-secondary">Regresar</a>
+                </div>
+
+        </div>
+    </div>
+</form>
+
+{% include 'footer.html' %}

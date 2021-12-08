@@ -9,6 +9,7 @@
             <th>Imagen</th>
             <th>Nombre</th>
             <th>Descripcion</th>
+            <th>Autor</th>
             <th>Acciones </th>
         </tr>
     </thead>
@@ -16,14 +17,12 @@
         {% for libro in libros %}
         <tr>
             <td>{{libro[0]}}</td>
-            <!--<td>{{libro[3]}}</td>-->
-            <!--Cambio hecho en el Punto 18-->
-            <td> <img class="img-thumbnail" width="100" src="uploads/{{libro[3]}}" alt=""> </td>
+            <td> <img class="img-thumbnail" width="100" src="uploads/{{libro[3]}}" alt="Foto de portada"> </td>
             <td>{{libro[1]}}</td>
             <td>{{libro[2]}}</td>
-            <!--<td> <a href="/edit/{{libro[0]}}">Editar</a> | <a href="/destroy/{{libro[0]}}">Borrar</a> </td>-->
-            <!--Cambio hecho en el Punto 21-->
-            <td> <a class="btn btn-warning" href="/edit/{{libro[0]}}">Editar</a> | <a class="btn btn-danger" onclick="return confirm('¿Desea borrar al libro?')" href="/destroy/{{libro[0]}}">Borrar</a> </td>
+            <td>{{libro[4]}}</td>
+            <td> <a class="btn btn-secondary" href="/edit/{{libro[0]}}">Editar</a> <a class="btn btn-danger" onclick="return confirm('¿Desea borrar al libro?')" href="/destroy/{{libro[0]}}">Borrar</a> </td>
+            <!-- OJO - En lugar del onclick se puede usar un archivo javascript EXTERNO - ver min 45 CRUD V-->
         </tr>
         {% endfor %}
     </tbody>
